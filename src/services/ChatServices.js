@@ -1,9 +1,6 @@
 import Api from '@/services/Api'
 
 export default {
-  signup (params) {
-    return Api().post('signup', params)
-  },
   login (params) {
     return Api().post('login', params);
   },
@@ -11,7 +8,7 @@ export default {
     return Api().get('api/v1/user');
   },
   logout () {
-    return Api().post('api/v1/logout');
+    return Api().post('logout');
   },
   getMessages (option, param) {
     return Api().get(`api/v1/messages/${option}/${param}`);

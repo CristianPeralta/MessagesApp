@@ -47,19 +47,36 @@ module.exports.createSocket = (data, cb) => {
   User.findOne({_id:data.to.user}).then((user, err) => {
     if (err) return cb(user, err)
     if (!user) return cb(user, err)
+    let max = Number(global.maxMessages)
+    Message.find({from: data.from}).sort('-1').limit(max).then((messages, err) => {
+      if (err) return cb(user, err)
+      let lastmax = moment()
+      if (messages[0]) {
+        lastmax = messages[0].createdAt
+      }
 
-    message.to = user._id
-    message.from = data.from
-    message.contents = data.contents
-    message.lang = data.lang
-    message.open = false
+      let difference = moment.duration(moment(lastmax).fromNow());
+      let diffHours = difference.asHours();
 
-    message.save((err, message) => {
-      if (err) cb(message, err)
-      Message.findOne({_id:message._id}).populate('to').populate('from').then((message, err) => {
-        return cb(message, err)
-      });
-    });
+      if (!((messages.length == max) && (diffHours < 1))) {
+        if (user) {
+          message.to = user._id
+          message.from = data.from
+          message.contents = data.contents
+          message.lang = data.lang
+          message.open = false
+
+          message.save((err, message) => {
+            if (err) cb(message, err)
+            Message.findOne({_id:message._id}).populate('to').populate('from').then((message, err) => {
+              return cb(message, err)
+            });
+          })
+        }
+      } else {
+        return cb(message, !err)
+      }
+    })
   })
 }
 
@@ -119,6 +136,11 @@ module.exports.translate = (req, res) => {
       }
     }).then((response) => {
       return res.json(response.data)
+      message.contents = response.data.text[0]
+      message.save((err, message) => {
+        if (err) return res.sendStatus(503)
+        return res.json(message)
+      })
     })
   })
 }

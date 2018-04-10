@@ -4974,9 +4974,6 @@ function normalizeComponent (
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  signup: function signup(params) {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('signup', params);
-  },
   login: function login(params) {
     return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('login', params);
   },
@@ -4984,7 +4981,7 @@ function normalizeComponent (
     return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('api/v1/user');
   },
   logout: function logout() {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('api/v1/logout');
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('logout');
   },
   getMessages: function getMessages(option, param) {
     return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('api/v1/messages/' + option + '/' + param);

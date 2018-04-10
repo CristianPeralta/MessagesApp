@@ -10,18 +10,18 @@ router.get('/', function(req, res, next) {
 
 router.post('/login', userController.login);
 router.post('/logout', userController.logout);
-
 router.get('/api/v1/user', userController.getUser);
 
 router.get('/api/v1/messages', messageController.getAll);
 router.post('/api/v1/messages', messageController.create);
 router.put('/api/v1/messages', messageController.update);
+router.delete('/api/v1/messages/:id', messageController.delete);
 
-router.get('/api/v1/messages/delete/:id', messageController.delete);
 router.get('/api/v1/messages/sent/:user', messageController.getSent);
 router.get('/api/v1/messages/received/:user', messageController.getReceived);
 router.get('/api/v1/messages/perlanguage/:lang', messageController.getPerLanguage);
-router.get('/api/v1/messages/:id/translate/:lang', messageController.translate);
 router.get('/api/v1/messages/historial/:from/:to', messageController.getHistorial);
+router.get('/api/v1/messages/:id/translate/:lang', messageController.translate);
+
 
 module.exports = router;
