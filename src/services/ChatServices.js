@@ -8,30 +8,30 @@ export default {
     return Api().post('login', params);
   },
   user () {
-    return Api().get('user');
+    return Api().get('api/v1/user');
   },
   logout () {
-    return Api().post('logout');
+    return Api().post('api/v1/logout');
   },
   getMessages (option, param) {
-    return Api().get(`messages/${option}/${param}`);
+    return Api().get(`api/v1/messages/${option}/${param}`);
   },
   updateMessage (params) {
-    return Api().post(`message/update`, params);
+    return Api().put(`api/v1/messages`, params);
   },
   removeMessage (id) {
-    return Api().get(`message/delete/${id}`);
+    return Api().delete(`api/v1/messages/${id}`);
   },
   getMessagesPerLanguage (lang) {
-    return Api().get(`messages/perlanguage/${lang}`);
+    return Api().get(`api/v1/messages/perlanguage/${lang}`);
   },
   getAllMessages () {
-    return Api().get(`messages`);
+    return Api().get(`api/v1/messages`);
   },
   addMessage (params) {
-    return Api().post('message', params);
+    return Api().post('api/v1/messages', params);
   },
   getHistorial (user, to) {
-    return Api().get('historial/' + user+'/'+ to);
+    return Api().get('api/v1/messages/historial/' + user+'/'+ to);
   }
 }

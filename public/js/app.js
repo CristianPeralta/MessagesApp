@@ -4981,31 +4981,31 @@ function normalizeComponent (
     return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('login', params);
   },
   user: function user() {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('user');
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('api/v1/user');
   },
   logout: function logout() {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('logout');
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('api/v1/logout');
   },
   getMessages: function getMessages(option, param) {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('messages/' + option + '/' + param);
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('api/v1/messages/' + option + '/' + param);
   },
   updateMessage: function updateMessage(params) {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('message/update', params);
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().put('api/v1/messages', params);
   },
   removeMessage: function removeMessage(id) {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('message/delete/' + id);
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().delete('api/v1/messages/' + id);
   },
   getMessagesPerLanguage: function getMessagesPerLanguage(lang) {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('messages/perlanguage/' + lang);
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('api/v1/messages/perlanguage/' + lang);
   },
   getAllMessages: function getAllMessages() {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('messages');
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('api/v1/messages');
   },
   addMessage: function addMessage(params) {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('message', params);
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().post('api/v1/messages', params);
   },
   getHistorial: function getHistorial(user, to) {
-    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('historial/' + user + '/' + to);
+    return Object(__WEBPACK_IMPORTED_MODULE_0__services_Api__["a" /* default */])().get('api/v1/messages/historial/' + user + '/' + to);
   }
 });
 
