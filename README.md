@@ -27,23 +27,23 @@ Example: http://localhost:5000/api/v1/messages
 Response body:
   {
       "createdAt": "2018-04-10T13:05:29.805Z",
-      "_id": "5accb69940e7593154fb2d88",
+      "_id": "5accb69940e7593154fb2d88",                                        __
       "to": {
           "createdAt": "2018-04-10T13:05:14.157Z",
-          "_id": "5accb68a40e7593154fb2d87",
+          "_id": "5accb68a40e7593154fb2d87",                                    __
           "name": "Maria",
-          "__v": 0
+          "__v": 0                                                              ___      
       },
       "from": {
           "createdAt": "2018-04-10T13:04:56.811Z",
-          "_id": "5accb67840e7593154fb2d86",
+          "_id": "5accb67840e7593154fb2d86",                                    __
           "name": "Juan",
-          "__v": 0
+          "__v": 0                                                              ___      
       },
       "contents": "Hello Maria",
       "lang": "en",
       "open": "false",
-      "__v": 0
+      "__v": 0                                                                  ___
   }
   __
 
@@ -95,23 +95,23 @@ Response body:
   [
     {
         "createdAt": "2018-04-10T13:05:29.805Z",
-        "_id": "5accb69940e7593154fb2d88",                              
+        "_id": "5accb69940e7593154fb2d88",                                      __
         "to": {
             "createdAt": "2018-04-10T13:05:14.157Z",
-            "_id": "5accb68a40e7593154fb2d87",
+            "_id": "5accb68a40e7593154fb2d87",                                  __
             "name": "Maria",
-            "__v": 0
+            "__v": 0                                                            ___
         },
         "from": {
             "createdAt": "2018-04-10T13:04:56.811Z",
-            "_id": "5accb67840e7593154fb2d86",
+            "_id": "5accb67840e7593154fb2d86",                                  __
             "name": "Juan",
-            "__v": 0
+            "__v": 0                                                            ___
         },
         "contents": "Hello Maria",
         "lang": "en",
         "open": "false",
-        "__v": 0
+        "__v": 0                                                                ____
     },
     {
       ...
@@ -130,23 +130,23 @@ Response body:
     [
       {
           "createdAt": "2018-04-10T13:05:29.805Z",
-          "_id": "5accb69940e7593154fb2d88",                              
+          "_id": "5accb69940e7593154fb2d88",                                    __
           "to": {
               "createdAt": "2018-04-10T13:05:14.157Z",
-              "_id": "5accb68a40e7593154fb2d87",
+              "_id": "5accb68a40e7593154fb2d87",                                __
               "name": "Maria",
-              "__v": 0
+              "__v": 0                                                          ___
           },
           "from": {
               "createdAt": "2018-04-10T13:04:56.811Z",
-              "_id": "5accb67840e7593154fb2d86",
+              "_id": "5accb67840e7593154fb2d86",                                __
               "name": "Juan",
-              "__v": 0
+              "__v": 0                                                          ___
           },
           "contents": "Hello Maria",
           "lang": "en",
           "open": "false",
-          "__v": 0
+          "__v": 0                                                              ___
       },
       {
         ...
@@ -165,23 +165,23 @@ Response body:
   [
     {
         "createdAt": "2018-04-10T13:05:29.805Z",
-        "_id": "5accb69940e7593154fb2d88",                              
+        "_id": "5accb69940e7593154fb2d88",                                      __
         "to": {
             "createdAt": "2018-04-10T13:05:14.157Z",
-            "_id": "5accb68a40e7593154fb2d87",
+            "_id": "5accb68a40e7593154fb2d87",                                  __
             "name": "Maria",
-            "__v": 0
+            "__v": 0                                                            ___
         },
         "from": {
             "createdAt": "2018-04-10T13:04:56.811Z",
-            "_id": "5accb67840e7593154fb2d86",
+            "_id": "5accb67840e7593154fb2d86",                                  __
             "name": "Juan",
-            "__v": 0
+            "__v": 0                                                            ___
         },
-        "contents": "Hello Maria",
+        "contents": "Hello Maria",                            
         "lang": "en",
         "open": "false",
-        "__v": 0
+        "__v": 0                                                                ___
     },
     {
       ...
@@ -200,23 +200,23 @@ Response body:
   [
     {
         "createdAt": "2018-04-10T13:05:29.805Z",
-        "_id": "5accb69940e7593154fb2d88",                              
+        "_id": "5accb69940e7593154fb2d88",                                      __
         "to": {
             "createdAt": "2018-04-10T13:05:14.157Z",
-            "_id": "5accb68a40e7593154fb2d87",
+            "_id": "5accb68a40e7593154fb2d87",                                  __
             "name": "Maria",
-            "__v": 0
+            "__v": 0                                                            ___
         },
         "from": {
             "createdAt": "2018-04-10T13:04:56.811Z",
-            "_id": "5accb67840e7593154fb2d86",
+            "_id": "5accb67840e7593154fb2d86",                                  __
             "name": "Juan",
-            "__v": 0
+            "__v": 0                                                            ___
         },
         "contents": "Hello Maria",
         "lang": "en",
         "open": "false",
-        "__v": 0
+        "__v": 0                                                                ___
     },
     {
       ...
@@ -233,23 +233,23 @@ Response body:
 
     {
         "createdAt": "2018-04-10T13:05:29.805Z",
-        "_id": "5accb69940e7593154fb2d88",                              
+        "_id": "5accb69940e7593154fb2d88",                                      __
         "to": {
             "createdAt": "2018-04-10T13:05:14.157Z",
-            "_id": "5accb68a40e7593154fb2d87",
+            "_id": "5accb68a40e7593154fb2d87",                                  __
             "name": "Maria",
-            "__v": 0
+            "__v": 0                                                            ___
         },
         "from": {
             "createdAt": "2018-04-10T13:04:56.811Z",
-            "_id": "5accb67840e7593154fb2d86",
+            "_id": "5accb67840e7593154fb2d86",                                  __
             "name": "Juan",
-            "__v": 0
+            "__v": 0                                                            ___
         },
         "contents": "Hello Maria",
         "lang": "en",
         "open": "false",
-        "__v": 0
+        "__v": 0                                                                ___
     }
   __
 
