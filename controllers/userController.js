@@ -1,6 +1,5 @@
-var mongoose = require("mongoose");
-var User = require('../models/User');
-
+import mongoose from "mongoose"
+import User from '../models/User'
 
 module.exports.login = (req, res) => {
   let data = req.body
@@ -8,39 +7,27 @@ module.exports.login = (req, res) => {
     if (!user) {
       let user = new User()
       user.name = data.name
-      user.save(function (err,user) {
-        if (err) {
-          console.log(err)
-          return res.sendStatus(503)
-        }
-        console.log('New User');
+      user.save((err,user) => {
+        if (err) return res.sendStatus(503)
         req.session.user = user
         return res.json(user)
       })
     } else {
-      console.log('Old User');
       req.session.user = user
       return res.json(user)
     }
   })
 }
 
-module.exports.getUser = function (req,res) {
-    let user = req.session.user;
-    if (!user) {
-      return res.json({});
-    } else {
-      return res.json(user)
-    }
+module.exports.getUser = (req,res) => {
+    let user = req.session.user
+    if (!user) return res.json({})
+    return res.json(user)
 }
 
-module.exports.logout= function (req,res) {
-    req.session.destroy(function(err) {
-      // cannot access session here
-      if(err){
-        console.log(err);
-        return res.sendStatus(503)
-      }
-      return res.sendStatus(200);
+module.exports.logout = (req,res) => {
+    req.session.destroy((err) => {
+      if(err) return res.sendStatus(503)
+      return res.sendStatus(200)
     })
 }

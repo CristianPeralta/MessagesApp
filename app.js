@@ -1,25 +1,26 @@
-var express = require('express');
-var session = require('express-session');
-var path = require('path');
-var cors = require('cors')
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var ejs = require("ejs").__express;
+import express from 'express'
+import session from 'express-session'
+import path from 'path'
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
+
+const ejs  = require("ejs").__express
 const initializeDatabases = require('./db')
 
-var app = express();
-var server = require('http').Server(app);
+const app = express();
+const server = require('http').Server(app);
 global.io = require('socket.io')(server);
-var messageController = require('./controllers/messageController');
-var userController = require('./controllers/userController');
+
+const messageController = require('./controllers/messageController');
 
 var usersOnline = [];
 
 process.env.maxMessage = 10
 global.maxMessages = process.env.maxMessage
 
-var index = require('./routes/index')
+const index = require('./routes/index')
 
 initializeDatabases().then(dbs => {
   console.log('We are connented to DB');
@@ -28,59 +29,53 @@ initializeDatabases().then(dbs => {
   console.error(err)
   process.exit(1)
 })
-//
-// mongoose.connect('mongodb://localhost:27017/chatMessageDb', function(err, res) {
-//   if(err) throw err;
-//   console.log('DB Connected successfully');
-// });
 
-io.on('connection', function(socket) {
-	console.log('A client has connected');
+io.on('connection', (socket) => {
+	console.log('A client has connected')
 
 	socket.on('userConnected', (data) => {
-      data.id = socket.id;
-      console.log(data);
+      data.id = socket.id
       addClient(data, () => {
-        io.emit('usersConnected', {data:usersOnline});
+        io.emit('usersConnected', {data:usersOnline})
       })
 	});
 
   socket.on('addMessagePrivated', (data) => {
     messageController.createSocket(data, (message, err) => {
-      io.to(data.to.id).emit('addMessagePrivated', {data:message, ok:!err,err:err});
-      io.to(socket.id).emit('addMessagePrivated', {data:message, ok:!err,err:err});
+      io.to(data.to.id).emit('addMessagePrivated', {data:message, ok:!err,err:err})
+      io.to(socket.id).emit('addMessagePrivated', {data:message, ok:!err,err:err})
 		})
 	});
 
   socket.on('userDisconnect', function(data) {
-    socket.disconnect();
+    socket.disconnect()
     usersOnline.map((element, idx) => {
       if (element.user._id == data.user._id) {
-        usersOnline.splice(idx,1);
+        usersOnline.splice(idx,1)
       }
-    });
+    })
     usersOnline = usersOnline.filter(function(n){ return n != undefined })
-    io.emit('usersConnected', {data:usersOnline});
-   });
+    io.emit('usersConnected', {data:usersOnline})
+   })
 
 	socket.on('disconnect', function() {
-      console.log('Got disconnect!');
-   });
-});
+      console.log('Got disconnect!')
+   })
+})
 
-function addClient(data, cb) {
-  if (data.user!=null) {
-    let exist=false;
-    if (usersOnline.length!=0) {
-      exist = usersOnline.find((element) =>{
-        return (element.user._id == data.user._id);
+function addClient (data, cb) {
+  if (data.user != null) {
+    let exist = false;
+    if (usersOnline.length != 0) {
+      exist = usersOnline.find((element) => {
+        return (element.user._id == data.user._id)
       });
     }
     if (!exist) {
-      usersOnline.push(data);
+      usersOnline.push(data)
     }
     usersOnline = usersOnline.filter(function(n){ return n != undefined })
-    cb();
+    cb()
   }
 }
 

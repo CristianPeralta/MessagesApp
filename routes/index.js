@@ -17,6 +17,7 @@ router.get('/messages/sent/:user', messageController.getSent);
 router.get('/messages/received/:user', messageController.getReceived);
 router.get('/messages/perlanguage/:lang', messageController.getPerLanguage);
 
+router.get('/api/messages/:id/translate/:lang', messageController.translate);
 router.get('/messages', messageController.getAll);
 
 router.post('/message', messageController.create);
