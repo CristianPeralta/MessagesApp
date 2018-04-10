@@ -25,7 +25,7 @@
                 <div class="container">
                   <h1 class="title">
                     <template v-if="!chooseLang">
-                      Welcome
+                      Welcome {{user.name}}
                     </template>
                     <p v-else>Choose a</p>
                   </h1>

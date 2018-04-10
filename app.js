@@ -15,6 +15,7 @@ global.io = require('socket.io')(server);
 
 const messageController = require('./controllers/messageController');
 
+
 var usersOnline = [];
 
 process.env.maxMessage = 10
@@ -42,6 +43,8 @@ io.on('connection', (socket) => {
 
   socket.on('addMessagePrivated', (data) => {
     messageController.createSocket(data, (message, err) => {
+      console.log(data.to.id);
+      console.log(socket.id);
       io.to(data.to.id).emit('addMessagePrivated', {data:message, ok:!err,err:err})
       io.to(socket.id).emit('addMessagePrivated', {data:message, ok:!err,err:err})
 		})

@@ -19381,7 +19381,9 @@ var render = function() {
                                   !_vm.chooseLang
                                     ? [
                                         _vm._v(
-                                          "\n                    Welcome\n                  "
+                                          "\n                    Welcome " +
+                                            _vm._s(_vm.user.name) +
+                                            "\n                  "
                                         )
                                       ]
                                     : _c("p", [_vm._v("Choose a")])

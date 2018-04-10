@@ -252,3 +252,10 @@ Response body:
         "__v": 0
     }
   __
+
+
+## Commands
+
+  * npm install
+  * npm run watch
+  * npm start
