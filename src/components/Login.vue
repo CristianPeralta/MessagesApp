@@ -34,28 +34,22 @@ export default {
     }
   },
   created () {
-    this.getUser(this.checkUser)
+    this.getUser()
   },
   methods: {
-    checkUser () {
-      if (this.session.name) {
-        this.$router.push({name: 'Room'});
-      }
-    },
     login () {
       ChatServices.login({
         name: this.name
       }).then((response) => {
         let user = response.data;
-        console.log(user);
         this.$router.push({ name: 'Home'})
       })
     },
     getUser (cb) {
       ChatServices.user().then((response) => {
         this.session = response.data;
-        cb();
-      });
+        this.$router.push({ name: 'Home'})
+      })
     }
   }
 }

@@ -5192,7 +5192,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
     }
   },
   mounted: function mounted() {
-    this.getUser(this.checkUser);
+    this.getUser();
     this.getLangs();
   },
 
@@ -5234,11 +5234,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
         _this2.languages = response.data.langs;
       });
     },
-    checkUser: function checkUser() {
-      if (!this.user.name) {
-        this.$router.push({ name: 'Login' });
-      }
-    },
     addPrivateUser: function addPrivateUser(to) {
       this.inboxs.push(to);
       this.getHistorial(this.user._id, to.user._id);
@@ -5259,18 +5254,16 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
         console.log(response.data);
       });
     },
-    getUser: function getUser(cb) {
+    getUser: function getUser() {
       var _this5 = this;
 
       __WEBPACK_IMPORTED_MODULE_7__services_ChatServices__["a" /* default */].user().then(function (response) {
         _this5.user = response.data;
-        _this5.solicitudes = _this5.user.solicitudes;
-        if (_this5.user.name) {
-          _this5.$socket.emit('userConnected', {
-            user: _this5.user
-          });
-        }
-        cb();
+        _this5.$socket.emit('userConnected', {
+          user: _this5.user
+        });
+      }).catch(function (err) {
+        _this5.$router.push({ name: 'Login' });
       });
     },
     addMessagePrivateSocket: function addMessagePrivateSocket() {
@@ -17426,15 +17419,10 @@ var apiKey = 'trnsl.1.1.20180410T094731Z.0698c61561dd9800.c3f8882f3dd2b9a2d1a290
     };
   },
   created: function created() {
-    this.getUser(this.checkUser);
+    this.getUser();
   },
 
   methods: {
-    checkUser: function checkUser() {
-      if (this.session.name) {
-        this.$router.push({ name: 'Room' });
-      }
-    },
     login: function login() {
       var _this = this;
 
@@ -17442,7 +17430,6 @@ var apiKey = 'trnsl.1.1.20180410T094731Z.0698c61561dd9800.c3f8882f3dd2b9a2d1a290
         name: this.name
       }).then(function (response) {
         var user = response.data;
-        console.log(user);
         _this.$router.push({ name: 'Home' });
       });
     },
@@ -17451,7 +17438,7 @@ var apiKey = 'trnsl.1.1.20180410T094731Z.0698c61561dd9800.c3f8882f3dd2b9a2d1a290
 
       __WEBPACK_IMPORTED_MODULE_0__services_ChatServices__["a" /* default */].user().then(function (response) {
         _this2.session = response.data;
-        cb();
+        _this2.$router.push({ name: 'Home' });
       });
     }
   }

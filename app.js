@@ -132,3 +132,5 @@ app.use(function(err, req, res, next) {
 server.listen(5000, function() {
 	console.log('Server running http://localhost:3000');
 });
+
+module.exports = server

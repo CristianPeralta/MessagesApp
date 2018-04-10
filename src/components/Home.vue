@@ -142,7 +142,7 @@ Vue.use(VueSocketio, 'ws://localhost:5000')
       }
     },
     mounted() {
-      this.getUser(this.checkUser)
+      this.getUser()
       this.getLangs()
     },
     filters: {
@@ -177,11 +177,6 @@ Vue.use(VueSocketio, 'ws://localhost:5000')
           this.languages = response.data.langs
         })
       },
-      checkUser () {
-        if (!this.user.name) {
-          this.$router.push({name: 'Login'});
-        }
-      },
       addPrivateUser (to) {
         this.inboxs.push(to);
         this.getHistorial(this.user._id, to.user._id);
@@ -199,16 +194,14 @@ Vue.use(VueSocketio, 'ws://localhost:5000')
             console.log(response.data);
         })
       },
-      getUser (cb) {
+      getUser () {
         ChatServices.user().then((response) => {
           this.user = response.data;
-          this.solicitudes = this.user.solicitudes;
-          if (this.user.name) {
-            this.$socket.emit('userConnected', {
-              user: this.user
-            });
-          }
-          cb();
+          this.$socket.emit('userConnected', {
+            user: this.user
+          });
+        }).catch((err) => {
+          this.$router.push({name: 'Login'});
         });
       },
       addMessagePrivateSocket () {

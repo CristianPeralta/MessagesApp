@@ -21,7 +21,7 @@ module.exports.login = (req, res) => {
 
 module.exports.getUser = (req,res) => {
     let user = req.session.user
-    if (!user) return res.json({})
+    if (!user) return res.sendStatus(404)
     return res.json(user)
 }
 
